@@ -573,7 +573,7 @@ public class JavaDialectRuntimeData
             this.store = store;
         }
 
-        public Class<?> loadClass( final String name,
+        public synchronized Class<?> loadClass( final String name,
                 final boolean resolve ) throws ClassNotFoundException {
             Class<?> cls = fastFindClass( name );
 

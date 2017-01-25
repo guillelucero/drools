@@ -84,6 +84,7 @@
     <dependency>
       <groupId>org.drools</groupId>
       <artifactId>knowledge-api</artifactId>
+      <version>5.5.0.Final.Patched</version>
     </dependency>
     <dependency>
       <groupId>org.drools</groupId>

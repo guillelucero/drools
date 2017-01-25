@@ -67,7 +67,7 @@ public class ExternalModelDRLEmitter  extends AbstractDRLEmitter {
 
     @Override
     protected void addAdditionalReasonCodeConsequence(Rule rule, Scorecard scorecard) {
-        if (!scorecard.isUseReasonCodes()) {
+        if (!scorecard.getUseReasonCodes()) {
             return;
         }
         String externalClassName =  null;
@@ -101,7 +101,7 @@ public class ExternalModelDRLEmitter  extends AbstractDRLEmitter {
 
     @Override
     protected void addAdditionalReasonCodeCondition(Rule rule, Scorecard scorecard) {
-        if (!scorecard.isUseReasonCodes()) {
+        if (!scorecard.getUseReasonCodes()) {
             return;
         }
         String externalClassName =  null;

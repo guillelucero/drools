@@ -160,7 +160,7 @@ public abstract class AbstractDRLEmitter {
     }
 
     protected void createInitialRule(List<Rule> ruleList, Scorecard scorecard) {
-        if (scorecard.getInitialScore() > 0 || scorecard.isUseReasonCodes()){
+        if (scorecard.getInitialScore() > 0 || scorecard.getUseReasonCodes()){
             String objectClass = scorecard.getModelName().replaceAll(" ", "");
             String ruleName = objectClass+"_init";
             Rule rule = new Rule(ruleName, 999, 1);
@@ -174,7 +174,7 @@ public abstract class AbstractDRLEmitter {
                 consequence.setSnippet("insertLogical(new InitialScore(\"" + objectClass+"\","+scorecard.getInitialScore() +"));");
                 rule.addConsequence(consequence);
             }
-            if (scorecard.isUseReasonCodes() ) {
+            if (scorecard.getUseReasonCodes() ) {
                 for (Object obj :scorecard.getExtensionsAndCharacteristicsAndMiningSchemas()){
                     if (obj instanceof Characteristics){
                         Characteristics characteristics = (Characteristics)obj;
@@ -311,7 +311,7 @@ public abstract class AbstractDRLEmitter {
         String field = ScorecardPMMLUtils.extractFieldNameFromCharacteristic(c);
 
         stringBuilder.append(setter).append(objectClass).append("\",\"").append(field).append("\",").append(scoreAttribute.getPartialScore());
-        if (scorecard.isUseReasonCodes()){
+        if (scorecard.getUseReasonCodes()){
             String reasonCode = scoreAttribute.getReasonCode();
             if (reasonCode == null || StringUtils.isEmpty(reasonCode)) {
                 reasonCode = c.getReasonCode();
@@ -340,7 +340,7 @@ public abstract class AbstractDRLEmitter {
         }
         ruleList.add(calcTotalRule);
 
-        if (scorecard.isUseReasonCodes()) {
+        if (scorecard.getUseReasonCodes()) {
             String ruleName = objectClass+"_collectReasonCodes";
             Rule rule = new Rule(ruleName, 1, 1);
             rule.setDescription("collect and sort the reason codes as per the specified algorithm");

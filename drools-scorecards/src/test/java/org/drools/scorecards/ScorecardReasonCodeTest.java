@@ -54,7 +54,7 @@ public class ScorecardReasonCodeTest {
         PMML pmml = scorecardCompiler.getPMMLDocument();
         for (Object serializable : pmml.getAssociationModelsAndBaselineModelsAndClusteringModels()){
             if (serializable instanceof Scorecard){
-                assertFalse(((Scorecard) serializable).isUseReasonCodes());
+                assertFalse(((Scorecard) serializable).getUseReasonCodes());
             }
         }
     }
@@ -63,7 +63,7 @@ public class ScorecardReasonCodeTest {
     public void testUseReasonCodes() throws Exception {
         for (Object serializable : pmmlDocument.getAssociationModelsAndBaselineModelsAndClusteringModels()){
             if (serializable instanceof Scorecard){
-                assertTrue(((Scorecard)serializable).isUseReasonCodes());
+                assertTrue(((Scorecard)serializable).getUseReasonCodes());
                 assertEquals(100.0, ((Scorecard)serializable).getInitialScore());
                 assertEquals("pointsBelow",((Scorecard)serializable).getReasonCodeAlgorithm());
             }
